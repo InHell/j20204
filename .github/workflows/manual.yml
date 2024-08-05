@@ -28,12 +28,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Runs a single command using the runners shell
-    - name: Send greeting
-      run: echo "Run environment type ${{ inputs.name }}"
-
-    - name: See folder
-      run: ls
-
+    - uses: actions/checkout@v3
 
     - name: Build frontEnd
       id: build-frontend
@@ -41,7 +36,7 @@ jobs:
         IMAGE_TAG: ${{ github.sha }}
       run: |
 
-        cd ./src/frontend
+        cd ./src/frontend/realworld-react
         docker build -t frontend:$IMAGE_TAG .
         echo "image=frontend:$IMAGE_TAG" >> $GITHUB_OUTPUT
 
@@ -51,7 +46,7 @@ jobs:
         IMAGE_TAG: ${{ github.sha }}
       run: |
 
-         cd ./src/backend
+         cd ./src/backend/realworld-spring
          docker build -t backend:$IMAGE_TAG .
          echo "image=backend:$IMAGE_TAG" >> $GITHUB_OUTPUT
 
