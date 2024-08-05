@@ -37,6 +37,7 @@ jobs:
       run: |
 
         cd ./src/frontend/realworld-react
+        ls
         docker build -t frontend:$IMAGE_TAG .
         echo "image=frontend:$IMAGE_TAG" >> $GITHUB_OUTPUT
 
@@ -47,6 +48,7 @@ jobs:
       run: |
 
          cd ./src/backend/realworld-spring
+         ls
          docker build -t backend:$IMAGE_TAG .
          echo "image=backend:$IMAGE_TAG" >> $GITHUB_OUTPUT
 
